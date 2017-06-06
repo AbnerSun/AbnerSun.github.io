@@ -21,6 +21,8 @@
 
 
 
+  <meta name="google-site-verification" content="CE64oMo2m6UOHb3pUM61tNXpwyuol1epk0NB8s19WBw" />
+
 
 
 
@@ -452,7 +454,9 @@
 </li>
 <li><p>其他<br> 1）添加RSS:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">a、安装插件，执行： $npm install hexo-generator-feed</div><div class="line">b、添加配置，在站点配置文件中添加如下配置</div><div class="line">    #RSS订阅</div><div class="line">    plugin:</div><div class="line">    - hexo-generator-feed</div><div class="line">    #Feed Atom</div><div class="line">    feed:</div><div class="line">    type: atom</div><div class="line">    path: atom.xml</div><div class="line">    limit: 20</div><div class="line">c、在主题配置文件中添加如下配置</div><div class="line">    # Set rss to false to disable feed link.</div><div class="line">    # Leave rss as empty to use site&apos;s feed link.</div><div class="line">    # Set rss to specific value if you have burned your feed already.</div><div class="line">    rss: /atom.xml</div></pre></td></tr></table></figure>
-<p> 2）添加:</p>
+<p> 2）添加搜索引擎验证:<br> <strong>利用 Github 与 Hexo 搭建的站点是不会被搜索引擎搜索到的，需要我们手动将站点提交给搜索引擎并通过验证</strong><br> 以下通过 HTML meta 标签验证的方式添加；在主题文件中按照目录查找 <code>themes/next/layout/_partials/head.swig</code> ，默认 head 文件中有提供了模板，修改其中content值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;% if theme.google_site_verification %&#125;</div><div class="line">  &lt;meta name=&quot;google-site-verification&quot; content=&quot;xxx&quot; /&gt;</div><div class="line">&#123;% endif %&#125;</div><div class="line"></div><div class="line">&#123;% if theme.baidu_site_verification %&#125;</div><div class="line">  &lt;meta name=&quot;baidu-site-verification&quot; content=&quot;xxx&quot; /&gt;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure>
+<p> 同时在主题配置文件中设置 <code>google-site-verification</code> 与 <code>baidu-site-verification</code> 的值为 ture.<br> <code>(如没有自行添加)</code><br> 引擎验证申请地址：<br> <a href="http://zhanzhang.baidu.com/linksubmit/url" target="_blank" rel="external">百度申请</a><br> <a href="https://www.google.com/webmasters/tools/home?hl=zh-CN" target="_blank" rel="external">Google申请</a></p>
 </li>
 </ol>
 <h3 id="站点部署："><a href="#站点部署：" class="headerlink" title="站点部署："></a>站点部署：</h3><p><strong>部署到 Github 上，对外访问。</strong></p>
