@@ -347,6 +347,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Blog/" itemprop="url" rel="index">
+                    <span itemprop="name">Blog</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -445,7 +467,7 @@
 <h4 id="2-启用主题"><a href="#2-启用主题" class="headerlink" title="2. 启用主题"></a>2. 启用主题</h4><p>打开站点配置文件，找到 theme 字段，将其值改为 next</p>
 <h4 id="3-主题设置"><a href="#3-主题设置" class="headerlink" title="3. 主题设置"></a>3. 主题设置</h4><p>打开主题配置文件，查找相应字段<br><strong>1）scheme</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Muse</div><div class="line">Mist</div><div class="line">Pisces</div></pre></td></tr></table></figure></p>
 <p><strong>2）auto_excerpt(首页自动摘录)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Automatically Excerpt. Not recommend.</div><div class="line"># Please use &lt;!-- more --&gt; in the post to control excerpt accurately.</div><div class="line">  auto_excerpt:</div><div class="line">  enable: true</div><div class="line">  length: 150</div></pre></td></tr></table></figure></p>
-<h4 id="4-其他"><a href="#4-其他" class="headerlink" title="4. 其他"></a>4. 其他</h4><p><strong>1）添加RSS:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">a、安装插件，执行： $npm install hexo-generator-feed</div><div class="line">b、添加配置，在站点配置文件中添加如下配置</div><div class="line">    #RSS订阅</div><div class="line">    plugin:</div><div class="line">    - hexo-generator-feed</div><div class="line">    #Feed Atom</div><div class="line">    feed:</div><div class="line">    type: atom</div><div class="line">    path: atom.xml</div><div class="line">    limit: 20</div><div class="line">c、在主题配置文件中添加如下配置</div><div class="line">    # Set rss to false to disable feed link.</div><div class="line">    # Leave rss as empty to use site&apos;s feed link.</div><div class="line">    # Set rss to specific value if you have burned your feed already.</div><div class="line">    rss: /atom.xml</div></pre></td></tr></table></figure></p>
+<h4 id="4-其他"><a href="#4-其他" class="headerlink" title="4. 其他"></a>4. 其他</h4><p><strong>1）添加RSS:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">a、安装插件，执行： $npm install hexo-generator-feed --save</div><div class="line">b、添加配置，在站点配置文件中添加如下配置</div><div class="line">    #RSS订阅</div><div class="line">    plugin:</div><div class="line">    - hexo-generator-feed</div><div class="line">    #Feed Atom</div><div class="line">    feed:</div><div class="line">    type: atom</div><div class="line">    path: atom.xml</div><div class="line">    limit: 20</div><div class="line">c、在主题配置文件中添加如下配置</div><div class="line">    # Set rss to false to disable feed link.</div><div class="line">    # Leave rss as empty to use site&apos;s feed link.</div><div class="line">    # Set rss to specific value if you have burned your feed already.</div><div class="line">    rss: /atom.xml</div></pre></td></tr></table></figure></p>
 <p><strong>2）添加搜索引擎验证(百度+Google):</strong><br><em>利用 Github 与 Hexo 搭建的站点是不会被搜索引擎搜索到的，需要我们手动将站点提交给搜索引擎并通过验证</em><br>以下通过 HTML meta 标签验证的方式添加；在主题文件中按照目录查找 <code>themes/next/layout/_partials/head.swig</code> ，默认 head 文件中有提供了模板，修改其中content值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;% if theme.google_site_verification %&#125;</div><div class="line">  &lt;meta name=&quot;google-site-verification&quot; content=&quot;xxx&quot; /&gt;</div><div class="line">&#123;% endif %&#125;</div><div class="line"></div><div class="line">&#123;% if theme.baidu_site_verification %&#125;</div><div class="line">  &lt;meta name=&quot;baidu-site-verification&quot; content=&quot;xxx&quot; /&gt;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure></p>
 <p>同时在主题配置文件中设置 <code>google-site-verification</code> 与 <code>baidu-site-verification</code> 的值为 ture.<br><code>(如没有自行添加)</code><br>引擎验证申请地址：<code>(百度验证完要漫长的等待...)</code><br><a href="http://zhanzhang.baidu.com/linksubmit/url" target="_blank" rel="external"><em>百度申请</em></a><br><a href="https://www.google.com/webmasters/tools/home?hl=zh-CN" target="_blank" rel="external"><em>Google申请</em></a></p>
 <p><strong>3）添加评论(Gitment:利用 Github Issues 搭建评论)[^2]:</strong></p>
@@ -460,6 +482,7 @@
 <li>c、老版 Next 主题需要手动自己添加，参考 <a href="http://www.zhaiqianfeng.com/2017/03/changyan-for-hexo-next-theme.html" target="_blank" rel="external"><em>宅前疯</em> 这篇博客</a></li>
 <li>d、新版(本站2017.06更新)打开主题配置文件，找到 chanyan，修改 enable 为 ture，分别添加 appid 跟 appkey 两个值</li>
 <li>e、编译并部署</li>
+<li>f、确保每篇文章开头部分front-matter 中添加了 comments: true，否则看不到评论，可以直接更改文章模板；畅言的主题可以在畅言后台设置：<code>畅言后台管理-系统设置-PC版设置-主题样式</code></li>
 </ul>
 <p><strong>5）添加搜索功能[^3]</strong></p>
 <ul>
@@ -670,6 +693,15 @@
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             
@@ -695,6 +727,17 @@
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/AbnerSun" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
         </div>
 
         
@@ -707,6 +750,20 @@
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://justhll.com" title="蛋总" target="_blank">蛋总</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         
