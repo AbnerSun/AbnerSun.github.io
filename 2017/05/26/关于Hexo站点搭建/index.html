@@ -263,22 +263,26 @@
   
     <div class="site-search">
       
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
   </div>
-  <div id="local-search-result"></div>
-</div>
+
 
 
 
@@ -387,8 +391,8 @@
 </blockquote>
 <h3 id="Hexo-安装"><a href="#Hexo-安装" class="headerlink" title="Hexo 安装:"></a>Hexo 安装:</h3><p><strong><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo</a> 有两份配置文件，_config.yml，一份位于站点跟目录(站点配置文件)，一份位于主题文件夹下(主题配置文件):</strong></p>
 <h4 id="1-NodeJS-安装-升级"><a href="#1-NodeJS-安装-升级" class="headerlink" title="1. NodeJS 安装(升级)"></a>1. NodeJS 安装(升级)</h4><h4 id="2-利用-npm-命令安装"><a href="#2-利用-npm-命令安装" class="headerlink" title="2. 利用 npm 命令安装:"></a>2. <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">利用 npm 命令安装</a>:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$npm install -g hero-cli</div></pre></td></tr></table></figure>
-<h4 id="3-建站"><a href="#3-建站" class="headerlink" title="3. 建站:"></a>3. 建站:</h4><p>1) 新建站点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo init &lt;folder&gt;</div><div class="line">$ cd &lt;folder&gt;</div><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
-<p>2) 指令</p>
+<h4 id="3-建站"><a href="#3-建站" class="headerlink" title="3. 建站:"></a>3. 建站:</h4><p><strong>1) 新建站点</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ hexo init &lt;folder&gt;</div><div class="line">$ cd &lt;folder&gt;</div><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
+<p><strong>2) 指令</strong></p>
 <table>
 <thead>
 <tr>
@@ -443,15 +447,27 @@
 </blockquote>
 <h4 id="1-克隆最新版本："><a href="#1-克隆最新版本：" class="headerlink" title="1. 克隆最新版本："></a>1. 克隆最新版本：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$cd site_folder</div><div class="line">$git clone https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
 <h4 id="2-启用主题"><a href="#2-启用主题" class="headerlink" title="2. 启用主题"></a>2. 启用主题</h4><p>打开站点配置文件，找到 theme 字段，将其值改为 next</p>
-<h4 id="3-主题设置"><a href="#3-主题设置" class="headerlink" title="3. 主题设置"></a>3. 主题设置</h4><p>打开主题配置文件，查找相应字段<br>1）scheme<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Muse</div><div class="line">Mist</div><div class="line">Pisces</div></pre></td></tr></table></figure></p>
-<p>2）auto_excerpt(首页自动摘录)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Automatically Excerpt. Not recommend.</div><div class="line"># Please use &lt;!-- more --&gt; in the post to control excerpt accurately.</div><div class="line">  auto_excerpt:</div><div class="line">  enable: true</div><div class="line">  length: 150</div></pre></td></tr></table></figure></p>
-<h4 id="4-其他"><a href="#4-其他" class="headerlink" title="4. 其他"></a>4. 其他</h4><p>1）添加RSS:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">a、安装插件，执行： $npm install hexo-generator-feed</div><div class="line">b、添加配置，在站点配置文件中添加如下配置</div><div class="line">    #RSS订阅</div><div class="line">    plugin:</div><div class="line">    - hexo-generator-feed</div><div class="line">    #Feed Atom</div><div class="line">    feed:</div><div class="line">    type: atom</div><div class="line">    path: atom.xml</div><div class="line">    limit: 20</div><div class="line">c、在主题配置文件中添加如下配置</div><div class="line">    # Set rss to false to disable feed link.</div><div class="line">    # Leave rss as empty to use site&apos;s feed link.</div><div class="line">    # Set rss to specific value if you have burned your feed already.</div><div class="line">    rss: /atom.xml</div></pre></td></tr></table></figure></p>
-<p>2）添加搜索引擎验证(百度+Google):<br><strong>利用 Github 与 Hexo 搭建的站点是不会被搜索引擎搜索到的，需要我们手动将站点提交给搜索引擎并通过验证</strong><br>以下通过 HTML meta 标签验证的方式添加；在主题文件中按照目录查找 <code>themes/next/layout/_partials/head.swig</code> ，默认 head 文件中有提供了模板，修改其中content值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;% if theme.google_site_verification %&#125;</div><div class="line">  &lt;meta name=&quot;google-site-verification&quot; content=&quot;xxx&quot; /&gt;</div><div class="line">&#123;% endif %&#125;</div><div class="line"></div><div class="line">&#123;% if theme.baidu_site_verification %&#125;</div><div class="line">  &lt;meta name=&quot;baidu-site-verification&quot; content=&quot;xxx&quot; /&gt;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure></p>
-<p>同时在主题配置文件中设置 <code>google-site-verification</code> 与 <code>baidu-site-verification</code> 的值为 ture.<br><code>(如没有自行添加)</code><br>引擎验证申请地址：<code>(百度验证完要漫长的等待...)</code><br><a href="http://zhanzhang.baidu.com/linksubmit/url" target="_blank" rel="external">百度申请</a><br><a href="https://www.google.com/webmasters/tools/home?hl=zh-CN" target="_blank" rel="external">Google申请</a></p>
-<p>3）添加评论(Gitment:利用 Github Issues 搭建评论)[^2]:</p>
+<h4 id="3-主题设置"><a href="#3-主题设置" class="headerlink" title="3. 主题设置"></a>3. 主题设置</h4><p>打开主题配置文件，查找相应字段<br><strong>1）scheme</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Muse</div><div class="line">Mist</div><div class="line">Pisces</div></pre></td></tr></table></figure></p>
+<p><strong>2）auto_excerpt(首页自动摘录)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Automatically Excerpt. Not recommend.</div><div class="line"># Please use &lt;!-- more --&gt; in the post to control excerpt accurately.</div><div class="line">  auto_excerpt:</div><div class="line">  enable: true</div><div class="line">  length: 150</div></pre></td></tr></table></figure></p>
+<h4 id="4-其他"><a href="#4-其他" class="headerlink" title="4. 其他"></a>4. 其他</h4><p><strong>1）添加RSS:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">a、安装插件，执行： $npm install hexo-generator-feed</div><div class="line">b、添加配置，在站点配置文件中添加如下配置</div><div class="line">    #RSS订阅</div><div class="line">    plugin:</div><div class="line">    - hexo-generator-feed</div><div class="line">    #Feed Atom</div><div class="line">    feed:</div><div class="line">    type: atom</div><div class="line">    path: atom.xml</div><div class="line">    limit: 20</div><div class="line">c、在主题配置文件中添加如下配置</div><div class="line">    # Set rss to false to disable feed link.</div><div class="line">    # Leave rss as empty to use site&apos;s feed link.</div><div class="line">    # Set rss to specific value if you have burned your feed already.</div><div class="line">    rss: /atom.xml</div></pre></td></tr></table></figure></p>
+<p><strong>2）添加搜索引擎验证(百度+Google):</strong><br><em>利用 Github 与 Hexo 搭建的站点是不会被搜索引擎搜索到的，需要我们手动将站点提交给搜索引擎并通过验证</em><br>以下通过 HTML meta 标签验证的方式添加；在主题文件中按照目录查找 <code>themes/next/layout/_partials/head.swig</code> ，默认 head 文件中有提供了模板，修改其中content值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;% if theme.google_site_verification %&#125;</div><div class="line">  &lt;meta name=&quot;google-site-verification&quot; content=&quot;xxx&quot; /&gt;</div><div class="line">&#123;% endif %&#125;</div><div class="line"></div><div class="line">&#123;% if theme.baidu_site_verification %&#125;</div><div class="line">  &lt;meta name=&quot;baidu-site-verification&quot; content=&quot;xxx&quot; /&gt;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure></p>
+<p>同时在主题配置文件中设置 <code>google-site-verification</code> 与 <code>baidu-site-verification</code> 的值为 ture.<br><code>(如没有自行添加)</code><br>引擎验证申请地址：<code>(百度验证完要漫长的等待...)</code><br><a href="http://zhanzhang.baidu.com/linksubmit/url" target="_blank" rel="external"><em>百度申请</em></a><br><a href="https://www.google.com/webmasters/tools/home?hl=zh-CN" target="_blank" rel="external"><em>Google申请</em></a></p>
+<p><strong>3）添加评论(Gitment:利用 Github Issues 搭建评论)[^2]:</strong></p>
 <ul>
 <li>a、Github 注册 OAuth Application <a href="https://github.com/settings/applications/new" target="_blank" rel="external">点击此处注册一个新的 OAuth Application</a><br>注册时其他选项可以随便填，但要确保填入正确的 callback URL（一般是评论页面对应的域名，如 <a href="http://justabner.com)，记录" target="_blank" rel="external">http://justabner.com)，记录</a> client id 以及 client secret 值.</li>
-<li>b、</li>
+<li>b、添加代码到页面中（这版用起来比较麻烦，等待作者后续更新）</li>
+</ul>
+<p><strong>4）添加评论(使用<a href="http://changyan.kuaizhan.com/" target="_blank" rel="external">畅言</a>):</strong></p>
+<ul>
+<li>a、注册畅言账号，注册的时候需要填网站域名跟备案，可以先随便在找一家网站填上去，等待审核通过后再修改成自己的域名</li>
+<li>b、点击进入后台，“后台总览”中查看 APP ID 与 APP KEY</li>
+<li>c、老版 Next 主题需要手动自己添加，参考 <a href="http://www.zhaiqianfeng.com/2017/03/changyan-for-hexo-next-theme.html" target="_blank" rel="external"><em>宅前疯</em> 这篇博客</a></li>
+<li>d、新版(2017.06更新)打开主题配置文件，找到 chanyan，修改 enable 为 ture，分别添加 appid 跟 appkey 两个值</li>
+<li>e、编译并部署</li>
+</ul>
+<p><strong>5）添加搜索功能(第三方搜索 algolia)</strong></p>
+<ul>
+<li>a、<a href="https://www.algolia.com/" target="_blank" rel="external">Algolia官网</a> 注册</li>
 </ul>
 <h3 id="站点部署："><a href="#站点部署：" class="headerlink" title="站点部署："></a>站点部署：</h3><p><strong>部署到 Github 上，对外访问。</strong></p>
 <h4 id="1-建立-Repository"><a href="#1-建立-Repository" class="headerlink" title="1. 建立 Repository:"></a>1. 建立 Repository:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">1）github 上建立远程仓库，your_name.github.io</div><div class="line">2）设置站点配置文件</div><div class="line">    deploy:</div><div class="line">    type: git</div><div class="line">    repo: https://github.com/AbnerSun/AbnerSun.github.io.git</div><div class="line">    branch: master</div><div class="line">3）GitHub Pages 绑定来自阿里云的域名[^1]</div><div class="line">    ① 在站点的 source 目录下创建 CNAME(标题大写，没有后缀) 文件，添加域名保存部署（直接添加域名，没有 http:// 打头，eg.：justabner.com）;  Github读取CNAME之后，Github服务器会设置 justabner.com为主域名，然后将 abnersun.github.io 重定向到justabner.com</div><div class="line">    ② 登陆阿里域名控制台，在域名解析中添加解析</div><div class="line">        A记录 ：@ ：192.30.252.145</div><div class="line">        A记录 ：@ ：192.30.252.153</div><div class="line">        CNAME ：www : abnersun.github.io</div></pre></td></tr></table></figure>
@@ -1203,6 +1219,19 @@
   </script>
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
 
 
 
