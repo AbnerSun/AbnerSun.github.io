@@ -76,17 +76,25 @@
 <li>a、Github 注册 OAuth Application <a href="https://github.com/settings/applications/new" target="_blank" rel="external">点击此处注册一个新的 OAuth Application</a><br>注册时其他选项可以随便填，但要确保填入正确的 callback URL（一般是评论页面对应的域名，如 <a href="http://justabner.com)，记录" target="_blank" rel="external">http://justabner.com)，记录</a> client id 以及 client secret 值.</li>
 <li>b、添加代码到页面中（这版用起来比较麻烦，等待作者后续更新）</li>
 </ul>
-<p><strong>4）添加评论(使用<a href="http://changyan.kuaizhan.com/" target="_blank" rel="external">畅言</a>):</strong></p>
+<p><strong>4）添加评论(利用<a href="http://changyan.kuaizhan.com/" target="_blank" rel="external">畅言</a>搭建评论):</strong></p>
 <ul>
 <li>a、注册畅言账号，注册的时候需要填网站域名跟备案，可以先随便在找一家网站填上去，等待审核通过后再修改成自己的域名</li>
 <li>b、点击进入后台，“后台总览”中查看 APP ID 与 APP KEY</li>
 <li>c、老版 Next 主题需要手动自己添加，参考 <a href="http://www.zhaiqianfeng.com/2017/03/changyan-for-hexo-next-theme.html" target="_blank" rel="external"><em>宅前疯</em> 这篇博客</a></li>
-<li>d、新版(2017.06更新)打开主题配置文件，找到 chanyan，修改 enable 为 ture，分别添加 appid 跟 appkey 两个值</li>
+<li>d、新版(本站2017.06更新)打开主题配置文件，找到 chanyan，修改 enable 为 ture，分别添加 appid 跟 appkey 两个值</li>
 <li>e、编译并部署</li>
 </ul>
-<p><strong>5）添加搜索功能(第三方搜索 algolia)</strong></p>
+<p><strong>5）添加搜索功能[^3]</strong></p>
 <ul>
-<li>a、<a href="https://www.algolia.com/" target="_blank" rel="external">Algolia官网</a> 注册</li>
+<li><p>a、生成博客的索引数据，Hexo 可以通过下面的插件生成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-search --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>b、在站点配置文件中添加如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">search:</div><div class="line">  path: search.xml #file path. Default is search.xml .#</div><div class="line">  field: post #(Default) - will only covers all the posts of your blog.#</div><div class="line">         page #will only covers all the pages of your blog.#</div><div class="line">         all  #will covers all the posts and pages of your blog.#</div></pre></td></tr></table></figure>
+<p><em>更多配置说明可到插件页面查看：<a href="https://github.com/PaicHyperionDev/hexo-generator-search" target="_blank" rel="external">hexo-generator-search</a></em></p>
+</li>
+<li>c、主题配置文件中设置 local_search 的 enable 的值为 ture</li>
+<li>d、部署站点，如果遇到问题尝试下执行清除缓存命令</li>
 </ul>
 <h3 id="站点部署："><a href="#站点部署：" class="headerlink" title="站点部署："></a>站点部署：</h3><p><strong>部署到 Github 上，对外访问。</strong></p>
 <h4 id="1-建立-Repository"><a href="#1-建立-Repository" class="headerlink" title="1. 建立 Repository:"></a>1. 建立 Repository:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">1）github 上建立远程仓库，your_name.github.io</div><div class="line">2）设置站点配置文件</div><div class="line">    deploy:</div><div class="line">    type: git</div><div class="line">    repo: https://github.com/AbnerSun/AbnerSun.github.io.git</div><div class="line">    branch: master</div><div class="line">3）GitHub Pages 绑定来自阿里云的域名[^1]</div><div class="line">    ① 在站点的 source 目录下创建 CNAME(标题大写，没有后缀) 文件，添加域名保存部署（直接添加域名，没有 http:// 打头，eg.：justabner.com）;  Github读取CNAME之后，Github服务器会设置 justabner.com为主域名，然后将 abnersun.github.io 重定向到justabner.com</div><div class="line">    ② 登陆阿里域名控制台，在域名解析中添加解析</div><div class="line">        A记录 ：@ ：192.30.252.145</div><div class="line">        A记录 ：@ ：192.30.252.153</div><div class="line">        CNAME ：www : abnersun.github.io</div></pre></td></tr></table></figure>
@@ -151,7 +159,7 @@
 <blockquote>
 <p><strong>未完待续</strong></p>
 </blockquote>
-<p>[^1]: 参考 <a href="http://bamzc.top/2016/11/29/github-pages-custom-domain" target="_blank" rel="external">http://bamzc.top/2016/11/29/github-pages-custom-domain</a><br>[^2]: 参考 <a href="https://github.com/imsun/gitment" target="_blank" rel="external">https://github.com/imsun/gitment</a></p>
+<p>[^1]: 参考 <a href="http://bamzc.top/2016/11/29/github-pages-custom-domain" target="_blank" rel="external">http://bamzc.top/2016/11/29/github-pages-custom-domain</a><br>[^2]: 参考 <a href="https://github.com/imsun/gitment" target="_blank" rel="external">https://github.com/imsun/gitment</a><br>[^3]: 参考 <a href="https://zetaoyang.github.io/post/2016/07/08/hexo-localsearch.html" target="_blank" rel="external">https://zetaoyang.github.io/post/2016/07/08/hexo-localsearch.html</a></p>
 ]]></content>
       
         
