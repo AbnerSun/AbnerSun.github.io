@@ -53,9 +53,6 @@
   
 
   
-    
-    
-  
 
   
 
@@ -65,10 +62,6 @@
 
   
 
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -499,26 +492,11 @@
 <h3 id="站点部署："><a href="#站点部署：" class="headerlink" title="站点部署："></a>站点部署：</h3><p><strong>部署到 Github 上，对外访问。</strong></p>
 <h4 id="1-建立-Repository"><a href="#1-建立-Repository" class="headerlink" title="1. 建立 Repository:"></a>1. 建立 Repository:</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">1）github 上建立远程仓库，your_name.github.io</div><div class="line">2）设置站点配置文件</div><div class="line">    deploy:</div><div class="line">    type: git</div><div class="line">    repo: https://github.com/AbnerSun/AbnerSun.github.io.git</div><div class="line">    branch: master</div><div class="line">3）GitHub Pages 绑定来自阿里云的域名[^1]</div><div class="line">    ① 在站点的 source 目录下创建 CNAME(标题大写，没有后缀) 文件，添加域名保存部署（直接添加域名，没有 http:// 打头，eg.：justabner.com）;  Github读取CNAME之后，Github服务器会设置 justabner.com为主域名，然后将 abnersun.github.io 重定向到justabner.com</div><div class="line">    ② 登陆阿里域名控制台，在域名解析中添加解析</div><div class="line">        A记录 ：@ ：192.30.252.145</div><div class="line">        A记录 ：@ ：192.30.252.153</div><div class="line">        CNAME ：www : abnersun.github.io</div></pre></td></tr></table></figure>
 <h4 id="2-部署步骤："><a href="#2-部署步骤：" class="headerlink" title="2. 部署步骤："></a>2. 部署步骤：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$hexo clean</div><div class="line">$hexo generate</div><div class="line">$hexo deploy</div><div class="line"></div><div class="line">后两步可简写为：$hexo d -g</div></pre></td></tr></table></figure>
-<h3 id="写博文"><a href="#写博文" class="headerlink" title="写博文:"></a>写博文:</h3><h4 id="1-页面、博文增删改"><a href="#1-页面、博文增删改" class="headerlink" title="1. 页面、博文增删改"></a>1. 页面、博文增删改</h4><ul>
-<li><p>新建页面</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new page pageName</div></pre></td></tr></table></figure>
-</li>
-<li><p>新建博文</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new post titleName</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><code>*hexo new 命令后面的参数没有时取站点配置文件中的 default_layout 字段值，记得查看自己的配置文件，以免新建文章的时候变成了新建页面(😓)*</code></p>
-<ul>
-<li>删除博文、页面<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a、执行 hexo clean</div><div class="line">b、在 source 文件夹下删除该文章或者页面目录</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="2-文章头格式"><a href="#2-文章头格式" class="headerlink" title="2. 文章头格式"></a>2. 文章头格式</h4><ul>
-<li><p>头格式支持 YAML 以及 JSON 两种格式;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">YAML:</div><div class="line">    title: Hello World</div><div class="line">    date: 2013/7/13 20:46:25</div><div class="line">    ---</div><div class="line"></div><div class="line">JSON:</div><div class="line">    &quot;title&quot;: &quot;Hello World&quot;,</div><div class="line">    &quot;date&quot;: &quot;2013/7/13 20:46:25&quot;</div><div class="line">    ;;;</div></pre></td></tr></table></figure>
-</li>
-<li><p>文章头格式默认值：</p>
-</li>
-</ul>
+<h3 id="写博文"><a href="#写博文" class="headerlink" title="写博文:"></a>写博文:</h3><h4 id="1-页面、博文增删改"><a href="#1-页面、博文增删改" class="headerlink" title="1. 页面、博文增删改"></a>1. 页面、博文增删改</h4><p><strong>1) 新建页面</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new page pageName</div></pre></td></tr></table></figure></p>
+<p><strong>2) 新建博文</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new post titleName</div></pre></td></tr></table></figure></p>
+<p><em><code>hexo new 命令后面的参数没有时取站点配置文件中的 default_layout 字段值，记得查看自己的配置文件，以免新建文章的时候变成了新建页面(😓)</code></em><br><strong>3) 删除博文、页面</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a、执行 hexo clean</div><div class="line">b、在 source 文件夹下删除该文章或者页面目录</div></pre></td></tr></table></figure></p>
+<h4 id="2-文章头格式"><a href="#2-文章头格式" class="headerlink" title="2. 文章头格式"></a>2. 文章头格式</h4><p><strong>1) 头格式支持 YAML 以及 JSON 两种格式;</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">YAML:</div><div class="line">    title: Hello World</div><div class="line">    date: 2013/7/13 20:46:25</div><div class="line">    ---</div><div class="line"></div><div class="line">JSON:</div><div class="line">    &quot;title&quot;: &quot;Hello World&quot;,</div><div class="line">    &quot;date&quot;: &quot;2013/7/13 20:46:25&quot;</div><div class="line">    ;;;</div></pre></td></tr></table></figure></p>
+<p><strong>2) 文章头格式默认值：</strong></p>
 <table>
 <thead>
 <tr>
